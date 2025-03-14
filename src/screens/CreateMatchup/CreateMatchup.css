@@ -1,0 +1,90 @@
+.create-matchup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.create-matchup-heading {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Display Key-Value in Single Line */
+.create-matchup-form-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+.create-matchup-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.create-matchup-value {
+  color: #333;
+  font-weight: normal;
+}
+
+/* Team Names in Vertical List */
+.create-matchup-team-list {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.create-matchup-team {
+  margin: 2px 0;
+}
+
+/* Button Container */
+.create-matchup-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.create-matchup-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1em;
+  margin-top: 30px;
+  width: 90%;
+  cursor: pointer;
+}
+
+.create-matchup-button:hover {
+  background: #0056b3;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .create-matchup-container {
+    padding: 20px;
+  }
+
+  .create-matchup-form-group {
+    /* flex-direction: column; */
+    align-items: flex-start;
+  }
+
+  .create-matchup-label {
+    margin-bottom: 3px;
+  }
+
+  .create-matchup-team-list {
+    margin-left: 10px;
+  }
+  .create-matchup-button {
+    width: 90%;
+  }
+  
+}

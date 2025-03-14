@@ -1,0 +1,105 @@
+.create-league-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px; /* Ensures consistent width */
+    margin: auto;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 60%;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  .create-league-input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Error styling: Red border */
+  .create-league-input.input-error {
+    border-color: red;
+  }
+  
+  /* Error message below input */
+  .validation-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Email Select Width Issue Fix */
+  .email-select {
+    width: 320px;
+  }
+  
+  .email-select .css-yk16xz-control,
+  .email-select .css-1pahdxg-control {
+    border-radius: 5px !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+  
+  /* Email select error */
+  .email-select.input-error {
+    border: 1px solid red !important;
+  }
+  
+  /* Button styling */
+  .button-container {
+    display: flex;
+    width: 100%;
+  }
+  
+  .add-league-btn {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    width: 50%;
+    max-width: 400px;
+    border-radius: 30px;
+    margin-top: 13px;
+    margin-left: 25%;
+  }
+  
+  /* Mobile Responsive Fix */
+  @media (max-width: 600px) {
+    .form-group {
+      width: 90%;
+    }
+    
+    .email-select {
+      width: 105%;
+    }
+  
+    .button-container {
+      width: 90%;
+    }
+  
+    .add-league-btn {
+      width: 100%;
+      margin-left: 5%;
+
+    }
+  }
+  

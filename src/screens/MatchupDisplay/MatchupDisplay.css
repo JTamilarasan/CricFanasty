@@ -1,0 +1,85 @@
+.matchup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .matchup-heading {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .matchup-info {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .matchup-dropdown {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .matchup-dropdown select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Matchup Box */
+  .matchup-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .matchup-box p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .vs {
+    font-weight: bold;
+    color: red;
+  }
+  
+  /* OK Button */
+  .matchup-button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .matchup-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .matchup-button:hover {
+    background: #0056b3;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 480px) {
+    .matchup-container {
+      padding: 20px;
+    }
+  
+    .matchup-box {
+      width: 90%;
+    }
+  }
+  

@@ -1,0 +1,133 @@
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .header {
+    background-color: #1E2A47;
+    color: white;
+    padding: 10px;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .login-name {
+    font-weight: bold;
+  }
+  
+  .logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .main-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #2F3A49;
+    padding: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 24px;
+  }
+  
+  .sidebar li {
+    margin: 50px 0;
+  }
+  
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .hamburger-icon {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Hide by default */
+  }
+  .content-area {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer {
+    background-color: #1E2A47;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .ipl-logo_img {
+    width: 60px;
+    display: block;
+    fill: white;
+    filter: brightness(0) invert(1);
+    
+  }
+
+  @media (max-width: 768px) {
+    /* Show Hamburger Button in Mobile View */
+    .hamburger-icon {
+      display: block;
+    }
+    .ipl-logo_img {
+        width: 60px;
+        display: block;
+        fill: white;
+        filter: brightness(0) invert(1);
+        margin-left: -65px;
+        
+      }
+  
+    /* Sidebar in Mobile View */
+    .sidebar {
+      position: fixed;
+      width: 100%;
+      height: auto;
+      top: 62.4px; /* Adjust to be below the header */
+      left: 0;
+      background-color: #2F3A49;
+      padding: 15px;
+      display: none; /* Hide by default */
+      z-index: 999;
+    }
+  
+    /* Show Sidebar when Open */
+    .sidebar.open {
+      display: block;
+    }
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        font-size: 18px;
+      }
+      
+      .sidebar li {
+        margin: 30px 0;
+      }
+  
+    /* Adjust Content Area */
+    .content-area {
+      padding: 10px;
+    }
+  }

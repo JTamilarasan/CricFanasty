@@ -1,0 +1,86 @@
+.create-modify-team-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .create-modify-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .create-modify-form-group {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .create-modify-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .create-modify-input {
+    width: 100%;
+    height: 40px; /* Fixed height to prevent expansion */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding/border doesn't change field size */
+    transition: border-color 0.2s ease-in-out; /* Smooth transition */
+  }
+  
+  /* Error Styling */
+  .create-modify-input.input-error {
+    border: 2px solid red;
+    height: 40px; /* Keep the same height */
+    padding: 7px; /* Adjust padding to maintain size */
+  }
+  
+  /* Error Message */
+  .create-modify-error-message {
+    color: red;
+    font-size: 0.85em;
+    margin-top: 3px;
+    display: block;
+  }
+  
+  
+  .create-modify-disabled-input {
+    background: #e0e0e0;
+    color: #666;
+  }
+  
+  .create-modify-button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .create-modify-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+    width: 90%;
+    margin-top: 10px;
+  }
+  
+  .create-modify-button:hover {
+    background: #0056b3;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 480px) {
+    .create-modify-team-container {
+      padding: 20px;
+    }
+  }
+  
