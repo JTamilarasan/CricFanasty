@@ -29,9 +29,12 @@ export const httpGetServices=(url)=>{
 
 export const httpServices = async (requestData, method, url) => {
   const requestUrl = serverurl + url;
-  let apiURL = mockResponsemode ? "https://localhost:3000" + url : requestUrl;
+  // let apiURL = mockResponsemode ? "https://localhost:3000" + url : requestUrl;
 
-  console.log("API Request Sent:", {
+  let apiURL =  requestUrl;
+
+
+  console.log("APISent:", {
     url: apiURL,
     method,
     data: requestData,
@@ -40,7 +43,9 @@ export const httpServices = async (requestData, method, url) => {
   try {
     const response = await axios({
       url: apiURL,
-      method: mockResponsemode ? "GET" : method,
+      // method: mockResponsemode ? "GET" : method,
+      method:  method,
+
       data: requestData,
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +53,7 @@ export const httpServices = async (requestData, method, url) => {
       },
     });
 
-    console.log("API Response:", response);
+    console.log("APIResponse:", response);
 
     if (response && response.status === 200 && response.data) {
       return response.data;

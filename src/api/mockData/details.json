@@ -1,5 +1,4 @@
 {
-    "id": 1,
-    "name": "Mock Global Data"
-  }
-  
+  "password": "Admin@123",
+  "email": "admin@gmail.com"
+}

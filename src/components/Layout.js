@@ -1,17 +1,24 @@
 import React, { useState ,useEffect} from "react";
-import { Link } from "react-router-dom";
-import logodashboard from "./../assets/logodashboard.png"; // Ensure this file exists
-import ballLoader from "./../assets/ballLoader.webp"; // Ensure this file exists
+import { Link ,useLocation } from "react-router-dom";
+import logodashboard from "./../assets/logodashboard.png"; 
+import ballLoader from "./../assets/ballLoader.webp"; 
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../redux/globalActions";
 
 
-import "./Layout.css"; // Add your custom CSS for layout styling
+
+
+import "./Layout.css"; 
 import { useNavigate } from "react-router-dom";
 
 
 const Layout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const dispatch = useDispatch();
+
     const navigate = useNavigate();
       const [loading, setLoading] = useState(true);
+      const location = useLocation(); 
 
       useEffect(()=>{
         setTimeout(() => {
@@ -28,7 +35,8 @@ const Layout = ({ children }) => {
 
   const handlelogout=()=>
   {
-    navigate("/"); // ✅ Navigate to Dashboard on success
+    navigate("/"); 
+    dispatch(logoutUser());
 }
   return (
     <div className="layout-container">
@@ -41,7 +49,6 @@ const Layout = ({ children }) => {
       {/* Header */}
       <header className="header">
         <div className="header-content">
-          {/* Mobile Hamburger Icon (Only Visible in Mobile) */}
           <button className="hamburger-icon" onClick={toggleSidebar}>
             &#9776; {/* Hamburger icon */}
           </button>
@@ -56,22 +63,24 @@ const Layout = ({ children }) => {
       </header>
 
       {/* Sidebar (Mobile: Below Header, Above Footer) */}
-      <div className="main-content">
 
-      <nav className={`sidebar ${isSidebarOpen ? "open" : ""}`} >
+      {/* <nav className={`sidebar ${isSidebarOpen ? "open" : ""}`} >
         <ul  onClick={toggleSidebar}>
-          <li><Link to="/dashboard"  onClick={toggleSidebar}>Dashboard</Link></li>
+          <li><Link to="/home"  onClick={toggleSidebar}>Dashboard</Link></li>
           <li><Link to="/Create-League">Create League</Link></li>
           <li><Link to="/my-CreateTeam">Create Team</Link></li>
           <li><Link to="/CreateMatchup">Create Matchup</Link></li>
           <li><Link to="/MatchupDisplay">MatchupDisplay</Link></li>          
           <li><Link to="/EditPlayer">EditPlayer</Link></li>
-          {/* <li><button className="logout-btn">Logout</button></li> */}
         </ul>
+        dispatch(logoutUser());
       </nav>
+ */}
+      <div className="main-content">
+
 
       {/* Main Content Area */}
-      <div className="content-area">{children}</div>
+      <div className={`${location.pathname === "/Create-League" ? "content-area" : "main-area"}`}>{children}</div>
       {/* <div>{children}</div> */}
 
       </div>

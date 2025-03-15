@@ -1,6 +1,6 @@
 import React from "react";
 
-const ErrorModal = ({ message }) => {
+const ErrorModal = ({ message, onClose }) => {
   if (!message) return null; // Don't render if there's no error message
 
   return (
@@ -8,8 +8,8 @@ const ErrorModal = ({ message }) => {
       <div style={styles.modalContent}>
         <h2 style={styles.title}>Error</h2>
         <p style={styles.message}>{message}</p>
-        <button style={styles.button} onClick={() => window.location.reload()}>
-          Refresh
+        <button style={styles.button} onClick={onClose}>
+          Close
         </button>
       </div>
     </div>
@@ -28,31 +28,37 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1000,
+    padding: "10px", // Ensures spacing on mobile
   },
   modalContent: {
     backgroundColor: "#fff",
-    padding: "20px",
-    borderRadius: "10px",
+    padding: "15px", // Reduced padding for smaller screens
+    borderRadius: "8px",
     textAlign: "center",
-    maxWidth: "400px",
-    boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
+    width: "90%", // Makes it more mobile-friendly
+    maxWidth: "350px", // Prevents too much width on desktop
+    boxShadow: "0px 4px 10px rgba(0,0,0,0.3)",
   },
   title: {
     color: "red",
-    fontSize: "22px",
+    fontSize: "20px", // Slightly smaller for better mobile readability
+    marginBottom: "10px",
   },
   message: {
-    fontSize: "16px",
+    fontSize: "14px", // Reduced for mobile readability
     marginBottom: "15px",
+    wordWrap: "break-word",
   },
   button: {
     backgroundColor: "red",
     color: "white",
     border: "none",
-    padding: "10px 15px",
+    padding: "8px 12px",
     borderRadius: "5px",
     cursor: "pointer",
-    fontSize: "16px",
+    fontSize: "14px",
+    width: "100%", // Full width on mobile
+    maxWidth: "100px", // Fixed width for better desktop appearance
   },
 };
 

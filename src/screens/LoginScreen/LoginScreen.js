@@ -1,85 +1,99 @@
 import React, { useState } from "react";
 import "./LoginScreen.css";
-import iplLogo from "./../../assets/iplLogo.ico"; 
-import ballLoader from "./../../assets/ballLoader.webp"; 
+import iplLogo from "./../../assets/iplLogo.ico";
+import ballLoader from "./../../assets/ballLoader.webp";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import axios from "axios";
-import { getapiLoginDatadetails } from "../../redux/globalActions";
-import { API_BASE_URL, mockMode } from "../../api/apiConfig";
-
+import { getapiLoginDatadetails,getapiSigndetails } from "../../redux/globalActions";
 
 const LoginScreen = () => {
-  const [credentials, setCredentials] = useState({ username: "", password: "" ,confirmpassword:""});
-  const [errors, setErrors] = useState({ username: "", password: "", confirmpassword:"",login: "" });
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [credentials, setCredentials] = useState({ username: "", password: "", confirmPassword: "" });
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
 
+  // Handle Input Change
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" }); 
+    setErrors({}); // Clear errors when user types
   };
 
-  const handleLogin = async () => {
+  const toggleMode = () => {
+    setIsSignUp(!isSignUp);
+    setErrors({}); 
+    setCredentials({ username: "", password: "", confirmPassword: "" }); 
+  };
 
-    setErrors({ username: "", password: "", login: "" });
+  // Handle Form Submission
+  const handleSubmit = async () => {
+    setErrors({});
 
-    if (!credentials.username || !credentials.password ||  !credentials.confirmpassword) {
+    if (!credentials.username || !credentials.password || (isSignUp && !credentials.confirmPassword)) {
       setErrors({
         username: credentials.username ? "" : "Please enter a username",
         password: credentials.password ? "" : "Please enter a password",
-        confirmpassword: credentials.confirmpassword ? "" : "Please enter a confirm password",
-
+        confirmPassword: isSignUp && !credentials.confirmPassword ? "Please confirm your password" : "",
       });
       return;
     }
 
-    if (credentials.password !== credentials.confirmpassword) {
-      setErrors({ ...errors, confirmpassword: "Your password and confirm password must be the same." });
+    if (isSignUp && credentials.password !== credentials.confirmPassword) {
+      setErrors({ confirmPassword: "Passwords do not match." });
       return;
     }
-    
+
     try {
       setLoading(true);
+      let payload;
+      if(isSignUp){
+        payload = { 
+          "email": credentials.username ,
+          "employeeRoleMasterId": null,
+          "gender": null,
+          "name": null,
+          "password": credentials.password,
+          "phoneNo": null
+        
 
-     let Payload=
-      {
-        "password": credentials.password,
-        "userName": credentials.username
-      }
-      
-     const response= await dispatch(getapiLoginDatadetails(Payload,"post"));
-
-      console.log(response,
-        "skdskl"
-      )
+        };
+        const response = await dispatch(getapiSigndetails(payload, "post"));
 
       if (response) {
-        localStorage.setItem("token", response.data); 
+        setIsSignUp(!isSignUp);
 
-        navigate("/dashboard"); 
-      } 
-    } catch (error) {
-      console.error("LoginError:", error);
-      const errorMessage = error || "Login failed1. Please try again.";
-      setErrors({ ...errors, login: errorMessage });
+       
+      }
+
+      }
+      else{
+         payload = { password: credentials.password, userName: credentials.username };
+   
+         const response = await dispatch(getapiLoginDatadetails(payload, "post"));
+
+      if (response) {
+        localStorage.setItem("token", response.data);
+        navigate("/home");
+      }
+
     }
-         setLoading(false);
- 
-
+    } catch (error) {
+      setErrors({ login: error });
+    }
+    setLoading(false);
   };
 
   return (
     <div className="login-container">
-       {loading && (
+      {loading && (
         <div className="loading-overlay">
           <img src={ballLoader} alt="Loading..." className="ball-loader" />
         </div>
       )}
       <div className="login-box">
         <img src={iplLogo} alt="IPL Logo" className="ipl-logo" />
-        <h2 className="title">CRCI Fantasy </h2>
+        <h2 className="title">{isSignUp ? "New User Sign Up" : "CRCI Fantasy Login"}</h2>
 
         <div className="input-group">
           <label htmlFor="username">Username/Email</label>
@@ -95,7 +109,7 @@ const LoginScreen = () => {
           {errors.username && <p className="error-text">{errors.username}</p>}
         </div>
 
-        <div className="input-group">
+        <div className="input-group password-group">
           <label htmlFor="password">Password</label>
           <input
             id="password"
@@ -109,26 +123,33 @@ const LoginScreen = () => {
           {errors.password && <p className="error-text">{errors.password}</p>}
         </div>
 
-        <div className="input-group">
-          <label htmlFor="confirmpassword">Confirm Password</label>
-          <input
-            id="confirmpassword"
-            type="password"
-            name="confirmpassword"
-            placeholder="Enter confirm password"
-            value={credentials.confirmpassword}
-            onChange={handleChange}
-            className={errors.confirmpassword ? "input-error" : ""}
-          />
-          {errors.confirmpassword && <p className="error-text">{errors.confirmpassword}</p>}
-        </div>
-        <br/>
+        {isSignUp && (
+          <div className="input-group">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              id="confirmPassword"
+              type="password"
+              name="confirmPassword"
+              placeholder="Enter Confirm Password"
+              value={credentials.confirmPassword}
+              onChange={handleChange}
+              className={errors.confirmPassword ? "input-error" : ""}
+            />
+            {errors.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
+          </div>
+        )}
 
         {errors.login && <p className="error-text login-error">{errors.login}</p>}
+        <div style={{marginTop:'20px'}}>
 
-        <button onClick={handleLogin} className="login-btn" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
+        <button onClick={handleSubmit} style={{marginBottom:"15px"}} className="login-btn" disabled={loading}>
+          {loading ? "Processing..." : isSignUp ? "Sign Up" : "Login"}
         </button>
+
+        <button className="toggle-btn" onClick={toggleMode}>
+          {isSignUp ? "Already have an account? Login" : "Don't have an account? Sign Up"}
+        </button>
+        </div>
       </div>
     </div>
   );

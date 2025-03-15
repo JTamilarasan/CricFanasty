@@ -81,7 +81,22 @@
     margin-top: 13px;
     margin-left: 25%;
   }
+  .back-button {
+    background: #007bff;
+    color: white;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 15px;
+    position: absolute;
+    top: 95px;
+    left: 430px;
+  }
   
+ 
   /* Mobile Responsive Fix */
   @media (max-width: 600px) {
     .form-group {
@@ -100,6 +115,12 @@
       width: 100%;
       margin-left: 5%;
 
+    }
+  }
+  @media (max-width: 768px) {
+    .back-button {
+      /* top: 30px; */
+      left: 20px;
     }
   }
   

@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "teamSname": "ARider",
+      "teamName": "ANU_2025_Riders",
+      "leagueId": 2,
+      "leagueUserId": 1,
+      "logo": "string",
+      "status": "JOINED"
+    },
+    {
+      "id": 1,
+      "teamSname": "ARider",
+      "teamName": "ANU_2025_Riders",
+      "leagueId": 2,
+      "leagueUserId": 1,
+      "logo": "string",
+      "status": ""
+    }
+  ]
+  
