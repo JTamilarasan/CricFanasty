@@ -47,7 +47,7 @@ const LeagueDetails = () => {
             <button className="leaguenewdetails-action-button" onClick={() => navigate("/league-standings", { state: { league } })}>
               Standings
             </button>
-            <button className="leaguenewdetails-action-button" onClick={() => navigate("/league-matchup", { state: { league } })}>
+            <button className="leaguenewdetails-action-button" onClick={() => navigate("/CreateMatchup", { state: { league } })}>
               Matchup
             </button>
           </div>

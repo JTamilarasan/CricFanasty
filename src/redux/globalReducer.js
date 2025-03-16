@@ -1,6 +1,7 @@
 import { FETCH_GLOBAL_DATA_SUCCESS,
   FETCH_LOGIN_SUCCESS,SET_ACCOUNERID,SET_LOGOUT,
-  GET_LEAGUEDTEAILS,CLEAR_API_ERROR,
+  GET_LEAGUEDTEAILS,CLEAR_API_ERROR,GET_MATCHUPTEAMDETAILS,
+  GET_MATCHUPLISTDETAILS,GET_MATCHUPTEAMLISTDETAILS,CLEAR_VALUES,
   
   SET_API_ERROR } from "./globalActions";
 
@@ -12,6 +13,9 @@ const initialState = {
   getleaguedetails:[],
   leagueteamownerId: localStorage.getItem("leagueteamownerId") || null,
   teamNames: [],
+  getmatchlistdetails:[],
+   getmatchteamlistdetails:[],
+
 };
 
 const globalReducer = (state = initialState, action) => {
@@ -26,6 +30,18 @@ const globalReducer = (state = initialState, action) => {
           return { ...state, apiError: true, errorMessage: action.payload };
           case CLEAR_API_ERROR: 
           return { ...state, apiError: false, errorMessage: "" };
+          case GET_MATCHUPTEAMDETAILS: 
+          return { ...state, getmatchupedetails: action.payload, errorMessage: "" };
+          case GET_MATCHUPLISTDETAILS: 
+          return { ...state, getmatchlistdetails: action.payload, errorMessage: "" };
+
+          case GET_MATCHUPTEAMLISTDETAILS: 
+          return { ...state, getmatchteamlistdetails: action.payload, errorMessage: "" };
+
+
+          case CLEAR_VALUES: 
+          return { ...state, getmatchteamlistdetails: [], errorMessage: "" };
+
 
     case GET_LEAGUEDTEAILS:
       const leagueData = Array.isArray(action.payload) ? action.payload : [];

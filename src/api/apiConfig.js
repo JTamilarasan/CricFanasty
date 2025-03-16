@@ -15,7 +15,7 @@ export const serverurl=newurl;
 
 
 console.log(serverurl,"serverurl")
-
+ 
 
 export const httpGetServices=(url)=>{
 

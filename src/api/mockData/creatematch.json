@@ -1,0 +1,30 @@
+[
+    {
+      "id": 0, 
+      "leagueId": 0,
+      "leagueUserId": 0,
+      "logo": "string",
+      "status": "JOINED",
+      "teamName": "MI",
+      "teamSname": "string"
+    },
+    {
+      "id": 0, 
+      "leagueId": 0,
+      "leagueUserId": 0,
+      "logo": "string",
+      "status": "JOINED",
+      "teamName": "CSK",
+      "teamSname": "string"
+    },
+    {
+      "id": 0, 
+      "leagueId": 0,
+      "leagueUserId": 0,
+      "logo": "string",
+      "status": "JOINED",
+      "teamName": "RCB",
+      "teamSname": "string"
+    }
+  ]
+  

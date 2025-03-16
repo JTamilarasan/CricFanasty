@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 400px;
+  max-width: 400px; 
   margin-bottom: 10px;
 }
 
@@ -64,13 +64,60 @@
 .create-matchup-button:hover {
   background: #0056b3;
 }
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures proper spacing */
+  width: 100%;
+  padding: 10px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  
+
+  background: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  position: absolute;
+  left: 300px;
+
+
+
+}
+.create-matchup-form-group {
+  display: flex;
+  align-items: flex-start; /* Aligns items at the top */
+  width: 100%;
+  max-width: 400px; 
+  margin-bottom: 10px;
+}
+
+.create-matchup-label {
+  font-weight: bold;
+  min-width: 120px; /* Ensures label width is consistent */
+}
+
+.create-matchup-team-list {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px; /* Gives space between label and list */
+}
+
+.create-matchup-team {
+  padding: 2px 0;
+}
+
 
 /* Mobile Responsive */
 @media (max-width: 480px) {
-  .create-matchup-container {
-    padding: 20px;
-  }
-
+ 
   .create-matchup-form-group {
     /* flex-direction: column; */
     align-items: flex-start;
@@ -88,3 +135,15 @@
   }
   
 }
+@media (max-width: 768px) {
+  .header-container {
+    justify-content: center; /* Centers everything on mobile */
+    position: relative;
+  }
+
+  .back-button {
+    position: absolute;
+    left: 10px; /* Ensures it's positioned properly */
+  }
+}
+

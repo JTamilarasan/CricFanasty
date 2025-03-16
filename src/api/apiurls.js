@@ -8,5 +8,9 @@ export const apiUrls={
     signupurl:!mockMode?"/api/cricfantasy/createUser":'/mockData/signup.json',
     fetchLeaguesurl:"/api/leagueteam/leagueteamowner/",
     createleague:"/api/createleague",
-    createTeam:"/api/leagueteam"
+    createTeam:"/api/leagueteam",
+    creatematchfetchData:"/api/leagueteam/leagueid",
+    getlistmatch:"/cricmatch/crictournamentid",
+    getlistteam:"/",
+    matchppost:"/"
 }

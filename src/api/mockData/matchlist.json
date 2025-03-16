@@ -1,0 +1,43 @@
+[
+    {
+      "cricMatchDate": "2025-03-15T13:17:22.310Z",
+      "cricTeamMasterteam1": 0,
+      "cricTeamMasterteam1Name": "CSK",
+      "cricTeamMasterteam2": 0,
+      "cricTeamMasterteam2Name": "MI",
+      "cricTeamMastertoss": 0,
+      "cricTeamMasterwinteam": 0,
+      "cricTournamentId": 0,
+      "id": 0,
+      "matchResult": "WON",
+      "team1Innings": "FIRST",
+      "team1Overs": 0,
+      "team1Score": 0,
+      "team1Wickets": 0,
+      "team2Innings": "FIRST",
+      "team2Overs": 0,
+      "team2Sscore": 0,
+      "team2Wickets": 0
+    },
+    {
+      "cricMatchDate": "2025-03-15T13:17:22.310Z",
+      "cricTeamMasterteam1": 0,
+      "cricTeamMasterteam1Name": "RCB",
+      "cricTeamMasterteam2": 0,
+      "cricTeamMasterteam2Name": "SRH",
+      "cricTeamMastertoss": 0,
+      "cricTeamMasterwinteam": 0,
+      "cricTournamentId": 1,
+      "id": 0,
+      "matchResult": "WON",
+      "team1Innings": "FIRST",
+      "team1Overs": 0,
+      "team1Score": 0,
+      "team1Wickets": 0,
+      "team2Innings": "FIRST",
+      "team2Overs": 0,
+      "team2Sscore": 0,
+      "team2Wickets": 0
+    }
+  ]
+  

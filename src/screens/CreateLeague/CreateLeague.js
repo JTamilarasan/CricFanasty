@@ -144,16 +144,17 @@ const CreateLeague = () => {
       catch (error) {
         // setErrors({ login: error });
       }
-      setLoading(false);
+      setLoading(false); 
   };
   const navigate = useNavigate();
   return (
     <div className="create-league-container">
-       <div className="back-button" onClick={() => navigate(-1)}>
-        <FaArrowLeft size={20} /> <span>Back</span>
-      </div>
-      <h2 style={{ marginLeft: "-100px" }}>Create League</h2>
-
+<div className="header-container">
+  <div className="back-button" onClick={() => navigate(-1)}>
+    <FaArrowLeft size={20} /> <span>Back</span>
+  </div>
+  <h2 className="page-title">Create League</h2>
+</div>
       <div className="form-container">
         <div className="form-group">
           <label>League Name</label>

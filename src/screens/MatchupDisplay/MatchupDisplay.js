@@ -1,33 +1,77 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MatchupDisplay.css";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { getListMatchdetails ,getListmatchteamsdetails,clearvalues} from "../../redux/globalActions";
+
+
+
+
 
 const MatchupDisplay = () => {
-  const tournamentName = "IPL 2025"; // Static Value
-  const leagueName = "Premier League"; // Static Value
+  const tournamentName = "IPL 2025"; 
+  const leagueName = "Premier League"; 
+  const navigate = useNavigate();
+  const [teamList, setTeamList] = useState([]);
+  const dispatch = useDispatch();
+  const matchlistDetails = useSelector((state) => state.global.getmatchlistdetails) || [];
+  const matchteamlistDetails = useSelector((state) => state.global.getmatchteamlistdetails) || [];
 
-  // Static Match List
-  const matches = [
-    { id: 1, name: "Match 1", teams: [["T1", "T2"], ["T3", "T4"], ["T5", "T6"], ["T7", "T8"]] },
-    { id: 2, name: "Match 2", teams: [["A1", "A2"], ["B1", "B2"], ["C1", "C2"], ["D1", "D2"]] },
-    { id: 3, name: "Match 3", teams: [["X1", "X2"], ["Y1", "Y2"], ["Z1", "Z2"], ["W1", "W2"]] }
-  ];
+  const [selectedMatch, setSelectedMatch] = useState("");
 
-  const [selectedMatch, setSelectedMatch] = useState(matches[0]); // Default to first match
+  useEffect(() => {
+    if (matchteamlistDetails && matchteamlistDetails.length > 0) {
+      setTeamList(matchteamlistDetails);
+      console.log("UpdatedteamList:", matchteamlistDetails);
+    } else {
+      setTeamList([]); // Clear list if no teams found
+    }
+  }, [matchteamlistDetails]);
 
-  const handleMatchChange = (event) => {
-    const selectedMatchId = parseInt(event.target.value);
-    const match = matches.find(m => m.id === selectedMatchId);
-    setSelectedMatch(match);
-  };
+      
+  
+   useEffect(() => {
+         dispatch(getListMatchdetails(1,true)); // Fetch league data
+         console.log(matchlistDetails,"matchlistDetails")
+      }, []);
+    
+
+      const handleMatchSelect = (event) => {
+        const selectedId = event.target.value;
+        const matchData = matchlistDetails.find(match => match.cricTournamentId.toString() === selectedId);
+    
+        if (matchData) {
+          setSelectedMatch(selectedId);
+          
+        //  callMatchApi(matchData.cricTournamentId); call api
+        dispatch(getListmatchteamsdetails(1,true)); // Fetch league data
+
+        }
+      };
 
   const handleOkClick = () => {
-    window.history.back(); // Navigate to the previous page
+    //window.history.back(); // Navigate to the previous page
+    navigate('/home')
+    dispatch(clearvalues())
+
+  };
+
+  const handleback = () => {
+    setTeamList([]); // Reset team list when navigating away
+    navigate(-1); // Navigate to the previous page
+    dispatch(clearvalues())
   };
 
   return (
     <div className="matchup-container">
-      <div className="matchup-heading">Matchup Display</div>
-
+      {/* <div className="matchup-heading">Matchup Display</div> */}
+ <div className="header-container">
+        <div className="back-button" onClick={() => handleback()}>
+          <FaArrowLeft size={20} /> <span>Back</span>
+        </div>
+        <h2 className="page-title">Matchup Display</h2>
+      </div>
       {/* Tournament & League Name */}
       <div className="matchup-info">
         <p><strong>Tournament Name:</strong> {tournamentName}</p>
@@ -36,20 +80,44 @@ const MatchupDisplay = () => {
 
       {/* Match Dropdown */}
       <div className="matchup-dropdown">
-        <label><strong>Select Match:</strong></label>
-        <select onChange={handleMatchChange} value={selectedMatch.id}>
-          {matches.map(match => (
-            <option key={match.id} value={match.id}>{match.name}</option>
-          ))}
-        </select>
-      </div>
+        <label><strong>Select Match:    </strong></label>
+        <select 
+        id="matchDropdown" 
+        value={selectedMatch} 
+        onChange={handleMatchSelect}
+        className="match-dropdown"
+      >
+        <option value="">-- Select Match --</option>
+        {matchlistDetails.length > 0 ? (
+          matchlistDetails.map((match) => {
+            const team1 = match.cricTeamMasterteam1Name || "Unknown";
+            const team2 = match.cricTeamMasterteam2Name || "Unknown";
+            return (
+              <option key={match.id} value={match.cricTournamentId}>
+                {team1} vs {team2}
+              </option>
+            );
+          })
+        ) : (
+          <option disabled>No Matches Available</option>
+        )}
+      </select>
+    </div>
 
       {/* Match Details */}
-      <div className="matchup-box">
+      {/* <div className="matchup-box">
         {selectedMatch.teams.map((teamPair, index) => (
           <p key={index}>{teamPair[0]} <span className="vs">vs</span> {teamPair[1]}</p>
         ))}
+      </div> */}
+{teamList && teamList.length > 0 &&
+       <div className="matchup-box">
+        {teamList && teamList.map((teamPair, index) => (
+          <p key={index}>{teamPair.team1} <span className="vs">vs</span> {teamPair.team2}</p>
+        ))}
       </div>
+
+}
 
       {/* OK Button */}
       <div className="matchup-button-container">

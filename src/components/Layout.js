@@ -80,7 +80,7 @@ const Layout = ({ children }) => {
 
 
       {/* Main Content Area */}
-      <div className={`${location.pathname === "/Create-League" ? "content-area" : "main-area"}`}>{children}</div>
+      <div className={`${location.pathname === "/Create-League1" ? "content-area" : "main-area"}`}>{children}</div>
       {/* <div>{children}</div> */}
 
       </div>

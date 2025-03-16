@@ -4,7 +4,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
   }
   
   .form-container {
@@ -81,7 +80,7 @@
     margin-top: 13px;
     margin-left: 25%;
   }
-  .back-button {
+  /* .back-button {
     background: #007bff;
     color: white;
     padding: 8px 12px;
@@ -95,7 +94,55 @@
     top: 95px;
     left: 430px;
   }
+   */
+  .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures proper spacing */
+  width: 100%;
+  padding: 10px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
   
+
+  background: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  position: absolute;
+  left: 300px;
+
+
+
+}
+
+.page-title {
+  flex-grow: 1;
+  text-align: center; /* Centers the text */
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-container {
+    justify-content: center; /* Centers everything on mobile */
+    position: relative;
+  }
+
+  .back-button {
+    position: absolute;
+    left: 10px; /* Ensures it's positioned properly */
+  }
+}
+
  
   /* Mobile Responsive Fix */
   @media (max-width: 600px) {
@@ -117,10 +164,5 @@
 
     }
   }
-  @media (max-width: 768px) {
-    .back-button {
-      /* top: 30px; */
-      left: 20px;
-    }
-  }
+ 
   
